@@ -123,7 +123,7 @@ namespace project2
                   int x = 5;
                     do
                     {
-                        Console.WriteLine("\n-----Data Project 1: Company Master------");
+                        Console.WriteLine("\n-----Data Project 2: Company Master------");
                         Console.WriteLine("Enter 1-For TestCase1 ");
                         Console.WriteLine("Enter 2-For TestCase2 ");
                         Console.WriteLine("Enter 3-For TestCase3 ");
