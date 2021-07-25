@@ -176,7 +176,7 @@ namespace project2
             SqlConnection conn = new SqlConnection(connectionString);
             //testcase1
             //Method 1 
-            /*
+            
             string command6 = "select sum(case when AUTHORIZED_CAP <= 100000 then 1 else 0 end) as <=1L," +
             "sum(case when  AUTHORIZED_CAP > 100000 and AUTHORIZED_CAP <= 1000000 then 1 else 0 end) as 10L to 1Cr," +
             "sum(case when  AUTHORIZED_CAP > 1000000 and AUTHORIZED_CAP <= 10000000 then 1 else 0 end) as 1Cr to 10Cr, " +
@@ -204,10 +204,10 @@ namespace project2
             }
 
 
-            */
+            
             //OR
             //Method 2
-
+            /*
             string command6 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP <= 100000";
             string command7 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP > 100000 and AUTHORIZED_CAP<= 1000000";
             string command8 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP > 1000000 and AUTHORIZED_CAP<= 10000000";
@@ -230,9 +230,9 @@ namespace project2
             table.Write();
             conn.Close();
 
+            */
 
-
-        }    
+            
     static void Testcase2()
         {
             //testcase2
