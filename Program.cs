@@ -174,61 +174,60 @@ namespace project2
         {
             string connectionString = "Server=LAPTOP-AS3FK0E2; Initial catalog=master;integrated security=True";
             SqlConnection conn = new SqlConnection(connectionString);
-            //testcase1
-            //Method 1 
-            
-            string command6 = "select sum(case when AUTHORIZED_CAP <= 100000 then 1 else 0 end) as <=1L," +
-            "sum(case when  AUTHORIZED_CAP > 100000 and AUTHORIZED_CAP <= 1000000 then 1 else 0 end) as 1L to 10L," +
-            "sum(case when  AUTHORIZED_CAP > 1000000 and AUTHORIZED_CAP <= 10000000 then 1 else 0 end) as 10L to 1Cr, " +
-            "sum(case when AUTHORIZED_CAP > 10000000 and AUTHORIZED_CAP <= 100000000 then 1 else 0 end) as 1Cr to 10Cr ," +
-            "sum(case when AUTHORIZED_CAP > 100000000 then 1 else 0 end) as >10Cr from neel2.dbo.Rajasthan";
+            string command6 = "select sum(case when AUTHORIZED_CAP <= 100000 then 1 else 0 end) as '<=1L'," +
+           "sum(case when  AUTHORIZED_CAP > 100000 and AUTHORIZED_CAP <= 1000000 then 1 else 0 end) as '1L to 10L'," +
+           "sum(case when  AUTHORIZED_CAP > 1000000 and AUTHORIZED_CAP <= 10000000 then 1 else 0 end) as '10L to 1Cr', " +
+           "sum(case when AUTHORIZED_CAP > 10000000 and AUTHORIZED_CAP <= 100000000 then 1 else 0 end) as '1Cr to 10Cr'," +
+           "sum(case when AUTHORIZED_CAP > 100000000 then 1 else 0 end) as '>10Cr' from neel2.dbo.Rajasthan";
             SqlCommand sqlCmd6 = new SqlCommand(command6, conn);
             conn.Open();
             SqlDataReader reader = sqlCmd6.ExecuteReader();
             var table = new ConsoleTable("Bin", "Counts");
             reader.Read();
-            Console.WriteLine("\nTestcase1 output");
+
             table.AddRow("<=1L", reader.GetValue(0))
                 .AddRow("1L to 10L", reader.GetValue(1))
-                    .AddRow("10L to 1Cr", reader.GetValue(2))
-                    .AddRow("1Cr to 10Cr", reader.GetValue(3))
-                    .AddRow(">10Cr", reader.GetValue(4));
-                //  Console.WriteLine("{0}\t{1}", reader.GetValue(0), reader.GetValue(1));
+                .AddRow("10L to 1Cr", reader.GetValue(2))
+                .AddRow("1Cr to 10Cr", reader.GetValue(3))
+                .AddRow(">10Cr", reader.GetValue(4));
+            //  Console.WriteLine("{0}\t{1}", reader.GetValue(0), reader.GetValue(1));
 
-            table.Write();
-            conn.Close();
-            }
-
-
-            
-            //OR
-            //Method 2
-            /*
-            string command6 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP <= 100000";
-            string command7 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP > 100000 and AUTHORIZED_CAP<= 1000000";
-            string command8 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP > 1000000 and AUTHORIZED_CAP<= 10000000";
-            string command9 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP > 10000000 and AUTHORIZED_CAP<= 100000000";
-            string command10 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP > 100000000";
-
-            SqlCommand sqlCmd6 = new SqlCommand(command6, conn);
-            SqlCommand sqlCmd7 = new SqlCommand(command7, conn);
-            SqlCommand sqlCmd8 = new SqlCommand(command8, conn);
-            SqlCommand sqlCmd9 = new SqlCommand(command9, conn);
-            SqlCommand sqlCmd10 = new SqlCommand(command10, conn);
-            conn.Open();
             Console.WriteLine("\nTestcase1 output");
-            var table = new ConsoleTable("Bin", "Counts");
-            table.AddRow("<=1L", sqlCmd6.ExecuteScalar())
-            .AddRow("1L to 10L", sqlCmd7.ExecuteScalar())
-            .AddRow("10L to 1Cr", sqlCmd8.ExecuteScalar())
-            .AddRow("1Cr to 10Cr", sqlCmd9.ExecuteScalar())
-            .AddRow(">10Cr", sqlCmd10.ExecuteScalar());
             table.Write();
             conn.Close();
 
-            */
+        }
 
-            
+
+
+        //OR
+        //Method 2
+        /*
+        string command6 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP <= 100000";
+        string command7 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP > 100000 and AUTHORIZED_CAP<= 1000000";
+        string command8 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP > 1000000 and AUTHORIZED_CAP<= 10000000";
+        string command9 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP > 10000000 and AUTHORIZED_CAP<= 100000000";
+        string command10 = "select count(*) from neel2.dbo.Rajasthan where AUTHORIZED_CAP > 100000000";
+
+        SqlCommand sqlCmd6 = new SqlCommand(command6, conn);
+        SqlCommand sqlCmd7 = new SqlCommand(command7, conn);
+        SqlCommand sqlCmd8 = new SqlCommand(command8, conn);
+        SqlCommand sqlCmd9 = new SqlCommand(command9, conn);
+        SqlCommand sqlCmd10 = new SqlCommand(command10, conn);
+        conn.Open();
+        Console.WriteLine("\nTestcase1 output");
+        var table = new ConsoleTable("Bin", "Counts");
+        table.AddRow("<=1L", sqlCmd6.ExecuteScalar())
+        .AddRow("1L to 10L", sqlCmd7.ExecuteScalar())
+        .AddRow("10L to 1Cr", sqlCmd8.ExecuteScalar())
+        .AddRow("1Cr to 10Cr", sqlCmd9.ExecuteScalar())
+        .AddRow(">10Cr", sqlCmd10.ExecuteScalar());
+        table.Write();
+        conn.Close();
+
+        */
+
+
         static void Testcase2()
         {
             //testcase2
@@ -251,8 +250,6 @@ namespace project2
             Console.WriteLine();
 
         }
-
-
         static void Testcase3()
         {
             //Testcase3
@@ -275,8 +272,6 @@ namespace project2
             Console.WriteLine();
 
         }
-
-
         static void Testcase4()
         {
             //Testcase4
@@ -304,6 +299,8 @@ namespace project2
             }
             table.Write();
             Console.WriteLine();
+
+
 
         }
     }
