@@ -82,7 +82,7 @@ namespace project2
                         conn.Close();
                         Console.WriteLine("table created");
 
-                        var reader = new StreamReader(@"C:\Users\yogen\source\repos\project2\Rajasthan.csv");
+                        var reader = new StreamReader(@"C:\Users\yogen\source\repos\projectt2\Rajasthan.csv");
                         var rows = new CsvReader(reader, CultureInfo.InvariantCulture);
                         foreach (var row in rows.GetRecords<RajasthanFile>())
                         {
@@ -113,9 +113,10 @@ namespace project2
                             conn.Open();
                             sqlCmd5.ExecuteNonQuery();
                             conn.Close();
-                        }
+                            
+                    }
+                   
 
-                    
                 }
 
                 if (string.Equals("analyzer", args[0]))
