@@ -238,17 +238,19 @@ namespace project2
             Console.WriteLine("\nTestcase2 output");
 
             var table = new ConsoleTable("Year", "No Of Registrations");
-            for (int i = 2000; i <= 2019; i++)
-            {
-                string command11 = string.Format("select count(*) from neel2.dbo.Rajasthan where year(DATE_OF_REGISTRATION)= {0}", i);
+            
+                string command11 = "select year(Date_of_registration),count(*) from neel2.dbo.Rajasthan where" +
+                " year(DATE_OF_REGISTRATION) BETWEEN 2000 and 2019 group by" +
+                " year(DATE_OF_REGISTRATION) order by year(DATE_OF_REGISTRATION)";
                 SqlCommand sqlCmd11 = new SqlCommand(command11, conn);
                 conn.Open();
-                table.AddRow(i, (int)sqlCmd11.ExecuteScalar());
-
-                conn.Close();
+            SqlDataReader dr = sqlCmd11.ExecuteReader();
+            while (dr.Read()) { 
+                table.AddRow(dr[0], dr[1]);   
             }
             table.Write();
             Console.WriteLine();
+            conn.Close();
 
         }
         static void Testcase3()
@@ -271,6 +273,7 @@ namespace project2
             }
             table.Write();
             Console.WriteLine();
+            conn.Close();
 
         }
         static void Testcase4()
